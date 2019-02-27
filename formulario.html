@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulário</title>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>        
+        <script type="text/javascript" src="funcoes.js"></script>                
+        <link rel="stylesheet" type="text/css" href="/node_modules/primeicons/primeicons.css" />
+        <link rel="stylesheet" type="text/css" href="/node_modules/primeng/resources/themes/nova-light/theme.css" />
+        <link rel="stylesheet" type="text/css" href="/node_modules/primeng/resources/primeng.min.css" />
+        <script>                        
+            var app = angular.module('myApp', []);
+            app.controller('myCtrl', function ($scope){
+                $scope.produtos = ["Litros", "Quilogramas", "Unidade"];
+            });       
+        </script>
+    </head>
+    <body>                
+          <form id="cadastroProduto"> 
+                <div  id="container" ng-app="myApp" ng-controller="myCtrl">
+                    <table>
+                        <tr>
+                            <td><label>Nome:</label></td>                                                                                    
+                            <td><input type="text" id="NomeProd" onkeyup="somente_letras(this)" size="50" maxlength="50"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" onclick="setarUnidade(this)" name="unidade" ng-model="myVar" value="lt"/>Litros
+                                <input type="radio" ng-model="myVar" onclick="setarUnidade(this)" name="unidade" value="kg"/>Quilogramas
+                                <input type="radio" ng-model="myVar" onclick="setarUnidade(this)" name="unidade" value="un"/>Unidade
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>Unidade de medida:</label></td>  
+                            <td><input id="UnidadeMedida" type="text"/></td>                                                                                                                        
+                        </tr>
+                        <tr>
+                            <td><label>Quantidade:</label></td>
+                            <td><input type="number" id="Quantidade"/></td>
+                        </tr>
+                        <tr>
+                            <td><label>Preço:</label></td>
+                            <td><input type="number" id="Preco"/></td>
+                        </tr>
+                        <tr>
+                            <td><label>Produto perecível:</label></td>
+                            <td><input type="checkbox" id="EhPerecivel"></td>
+                        </tr>
+                        <tr>
+                            <td><label>Data de validade:</label></td>
+                            <td><input type="date" id="DataValidade"/></td>
+                        </tr>
+                        <tr>
+                            <td><label>Data de fabricação:</label></td>
+                            <td><input type="date" id="DataFabricacao"/></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" onclick="Adicionar()" id="btnSalvar">Salvar</a></td>
+                            <td><a href="listagemDados.html">Cancelar</a></td>
+                        </tr>
+                    </table>                                        
+                </div>
+                <input type="hidden" id="index"/>                
+          </form>          
+    </body>
+</html>
